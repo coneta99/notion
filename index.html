@@ -1,6 +1,7 @@
 <!-- original : https://codepen.io/SeanNorton/pen/LWBXQL -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Bebas+Neue" rel="stylesheet">
 
@@ -9,20 +10,20 @@
     <title>greeting2</title>
 
     <style>
-        /CSS RESETS/
+        /*CSS RESETS*/
 
         body {
             background-color: #fff;
             line-height: 1.6;
             margin: 0;
-            /* Eliminamos el margen predeterminado del cuerpo /
+            /* Eliminamos el margen predeterminado del cuerpo */
             overflow: hidden;
-            / Evitamos el desplazamiento horizontal debido a contenido extra ancho /
+            /* Evitamos el desplazamiento horizontal debido a contenido extra ancho */
         }
 
         html {
             margin: 0;
-            / Eliminamos el margen predeterminado del elemento html /
+            /* Eliminamos el margen predeterminado del elemento html */
         }
 
         h1 {
@@ -34,7 +35,7 @@
         }
 
 
-        /CSS START/
+        /*CSS START*/
 
         .full-table {
             display: table;
@@ -53,6 +54,8 @@
             background: #f6f3f8;
             color: #373530;
             display: inline-block;
+            /* Eliminamos el box-shadow para que no ocupe espacio adicional */
+            /* box-shadow: 2px 2px 1px 0px #330835; */
             height: 100%;
             width: 100%;
             margin: 0;
@@ -97,84 +100,88 @@
         }
     </style>
 </head>
+
 <body>
     <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto:400,700" rel="stylesheet">
 
-<div class="full-table">
-  <div class="table-cell">
-    
-    <div class="card">
-        <div class="greet" id="greet"></div>
-      <div class="date" id="date"></div>
-      <div class="clock">
-        <div class="time" id="hour"></div>
-        <div class="colon">:</div>
-        <div class="time" id="min"></div>
-      </div>
+    <div class="full-table">
+        <div class="table-cell">
+
+            <div class="card">
+                <div class="greet" id="greet"></div>
+                <div class="date" id="date"></div>
+                <div class="clock">
+                    <div class="time" id="hour"></div>
+                    <div class="colon">:</div>
+                    <div class="time" id="min"></div>
+                    <div class="colon">:</div>
+                    <div class="time" id="sec"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    
-  </div>
-</div>
 
-<script>
-    function date() {
-var today = new Date();
-document.getElementById('date').innerHTML = today.toDateString();
-}
+    <script>
+        function date() {
+            var today = new Date();
+            document.getElementById('date').innerHTML = today.toDateString();
+        }
 
 
-function clock() {
-var today = new Date();
-var hour = zeros(twelveHour(today.getHours()));
-var minutes = zeros(today.getMinutes());
-var seconds = zeros(today.getSeconds());
-if(today.getHours() >=12){
-    minutes+=" pm"
-}
-else{
-    minutes+=" am"
-}
-hrs = today.getHours();
-if (hrs < 12)
-        greet = 'Good Morning Coneta';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon Coneta';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening Coneta';
-// console.log(today.toLocaleTimeString());
-document.getElementById('greet').innerHTML = greet;
-document.getElementById('hour').innerHTML = hour;
-document.getElementById('min').innerHTML = minutes;
-document.getElementById('sec').innerHTML = seconds;
-}
+        function clock() {
+            var today = new Date();
+            var hour = zeros(twelveHour(today.getHours()));
+            var minutes = zeros(today.getMinutes());
+            var seconds = zeros(today.getSeconds());
+            if (today.getHours() >= 12) {
+                seconds += " pm"
+            }
+            else {
+                seconds += " am"
+            }
+            hrs = today.getHours();
+            if (hrs < 12)
+                greet = 'Good Morning  ';
+            else if (hrs >= 12 && hrs <= 17)
+                greet = 'Good Afternoon ';
+            else if (hrs >= 17 && hrs <= 24)
+                greet = 'Good Evening  ';
+            // console.log(today.toLocaleTimeString());
+            document.getElementById('greet').innerHTML = greet;
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('min').innerHTML = minutes;
+            document.getElementById('sec').innerHTML = seconds;
+        }
 
-function twelveHour(hour) {
-if (hour > 12) {
-    return hour -= 12 
-} else if (hour === 0) {
-    return hour = 12;
-} else {
-    return hour
-}
-}
-    
-// adds zero infront of single digit number
-function zeros(num) {
-if (num < 10) {
-    num = '0' + num
-};
-return num;
-}
+        function twelveHour(hour) {
+            if (hour > 12) {
+                return hour -= 12
+            } else if (hour === 0) {
+                return hour = 12;
+            } else {
+                return hour
+            }
+        }
 
-function dateTime() {
-date();
-clock();
-setTimeout(dateTime, 500);
-}
+        // adds zero infront of single digit number
+        function zeros(num) {
+            if (num < 10) {
+                num = '0' + num
+            };
+            return num;
+        }
 
-dateTime()
+        function dateTime() {
+            date();
+            clock();
+            setTimeout(dateTime, 500);
+        }
+
+        dateTime()
 // END
-</script>
+    </script>
 
 </body>
+
 </html>
