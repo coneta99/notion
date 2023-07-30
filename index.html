@@ -98,6 +98,8 @@ h1 {
         <div class="time" id="hour"></div>
         <div class="colon">:</div>
         <div class="time" id="min"></div>
+        <div class="colon">:</div>
+        <div class="time" id="sec"></div>
       </div>
     </div>
     
@@ -117,10 +119,10 @@ var hour = zeros(twelveHour(today.getHours()));
 var minutes = zeros(today.getMinutes());
 var seconds = zeros(today.getSeconds());
 if(today.getHours() >=12){
-    minutes+=" pm"
+    seconds+=" pm"
 }
 else{
-    minutes+=" am"
+    seconds+=" am"
 }
 hrs = today.getHours();
 if (hrs < 12)
